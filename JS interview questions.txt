@@ -1,0 +1,217 @@
+Interviewer: "What is JavaScript, and how does it differ from other languages like Java?"
+Candidate:
+JavaScript is a high-level, interpreted scripting language primarily used to create dynamic content on web pages. Unlike Java, which is a statically typed, class-based language that compiles to bytecode, JavaScript is dynamically typed and runs directly in the browser or through environments like Node.js. JavaScript is known for its event-driven nature and single-threaded, non-blocking I/O operations, thanks to the event loop.
+
+Interviewer: "Can you explain == vs === in JavaScript?"
+Candidate:
+Yes. In JavaScript, == is the loose equality operator, meaning it checks for equality after performing type conversion. So if you compare "5" == 5, JavaScript will coerce the string "5" into a number and return true. On the other hand, === is the strict equality operator, meaning it checks for both value and type. If you compare "5" === 5, it will return false because one is a string and the other is a number.
+
+Interviewer: "Can you explain closures and give an example?"
+Candidate:
+A closure is a feature in JavaScript where an inner function has access to the outer (enclosing) function's variables. Closures are created when a function is defined inside another function and retains access to the outer function's scope even after the outer function has finished executing.
+
+For example:
+
+function outerFunction() {
+  let outerVariable = 'I am from outer scope';
+  
+  function innerFunction() {
+    console.log(outerVariable);
+  }
+  
+  return innerFunction;
+}
+
+const closureExample = outerFunction();
+closureExample(); // Outputs: 'I am from outer scope'
+In this example, innerFunction has access to outerVariable even after outerFunction has completed, which is a closure.
+
+Interviewer: "What is the purpose of the this keyword in JavaScript?"
+Candidate:
+The this keyword in JavaScript refers to the context in which a function is called. Its value depends on how the function is invoked. In the global scope, this refers to the window object in a browser. Inside an object method, this refers to the object itself. In a constructor function, this refers to the newly created instance. Arrow functions differ slightly; they do not have their own this but inherit it from the surrounding lexical scope.
+
+Interviewer: "Can you describe how JavaScript handles asynchronous operations?"
+Candidate:
+JavaScript handles asynchronous operations through the use of callbacks, Promises, and async/await syntax. The JavaScript runtime environment includes an event loop, which processes tasks in the call stack and handles asynchronous events, like API requests, without blocking the main thread.
+
+For example, Promises provide a way to handle asynchronous operations with .then() and .catch() methods:
+
+javascript
+Copy code
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+Async/await, introduced in ES8, allows us to write asynchronous code that looks synchronous:
+
+javascript
+Copy code
+async function fetchData() {
+  try {
+    let response = await fetch('https://api.example.com/data');
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+1. What is JavaScript?
+JavaScript is a versatile, interpreted programming language primarily used for adding interactivity to web pages. It’s a client-side language, but with Node.js, it can also be used on the server side.
+
+2. What is the difference between let, const, and var?
+var has function scope and can be re-declared.
+let has block scope and cannot be re-declared within the same scope.
+const has block scope, cannot be re-assigned, and must be initialized at the time of declaration.
+3. Explain == vs ===.
+== checks for value equality with type coercion.
+=== checks for both value and type equality without type coercion.
+4. What is a closure?
+A closure is a function that remembers its scope even after the outer function has completed. This allows the inner function to access the variables of the outer function.
+
+5. Explain the this keyword.
+In the global context, this refers to the global object (window in browsers).
+Inside a method, this refers to the object that owns the method.
+In arrow functions, this lexically binds to the surrounding scope.
+6. What is hoisting?
+Hoisting is JavaScript's behavior of moving declarations to the top of the scope. This applies to var, let, const, and function declarations, though let and const are hoisted in a "temporal dead zone."
+
+7. What is a promise?
+A Promise is an object representing the eventual completion or failure of an asynchronous operation, allowing code to handle async actions without chaining callbacks.
+
+8. Explain async/await.
+async/await is a syntax for handling asynchronous operations. It allows async code to look synchronous and simplifies error handling with try/catch.
+
+9. What is the difference between synchronous and asynchronous code?
+Synchronous code blocks further execution until it finishes, while asynchronous code allows other tasks to run in the background, often using Promises or callbacks.
+
+10. What is an Immediately Invoked Function Expression (IIFE)?
+An IIFE is a function that executes immediately after it's created, usually to create a new scope. Example:
+
+javascript
+Copy code
+(function() {
+  console.log("IIFE executed!");
+})();
+11. Explain event delegation.
+Event delegation is a technique where a single event listener is attached to a parent element to manage events from multiple child elements, improving performance.
+
+12. What is the call method?
+call is a method that invokes a function with a specified this value and individual arguments.
+
+13. Explain apply method.
+apply is similar to call but takes an array of arguments instead of individual arguments.
+
+14. What is the bind method?
+bind returns a new function, allowing you to set the this context and parameters. It does not immediately invoke the function.
+
+15. What is currying?
+Currying is the process of transforming a function with multiple arguments into a series of functions that each take a single argument.
+
+16. Explain the concept of prototypes.
+Every JavaScript object has a prototype, which is a mechanism for inheritance. Properties and methods of an object’s prototype are accessible to instances.
+
+17. What is the DOM?
+The DOM (Document Object Model) is a programming interface for HTML and XML documents, representing the structure of a document as a tree of nodes.
+
+18. Explain map(), filter(), and reduce().
+map(): Creates a new array by transforming each element in the array.
+filter(): Creates a new array with elements that pass a test.
+reduce(): Reduces the array to a single value by executing a function on each element.
+19. What is event bubbling?
+Event bubbling is when an event triggers on an element and then propagates up to its ancestors.
+
+20. Explain the difference between undefined and null.
+undefined indicates a variable has been declared but not assigned a value.
+null is an assignment value representing no value.
+21. What is NaN?
+NaN stands for "Not-a-Number." It is returned when a math operation fails or a value cannot be converted to a number.
+
+22. What is the typeof operator?
+typeof is an operator that returns the data type of a variable.
+
+23. Explain memoization.
+Memoization is an optimization technique that stores the results of expensive function calls for reuse, avoiding redundant calculations.
+
+24. What are arrow functions?
+Arrow functions provide a shorter syntax for functions and do not have their own this context.
+
+25. Explain destructuring in JavaScript.
+Destructuring is a syntax for unpacking values from arrays or objects into individual variables.
+
+26. What is the spread operator?
+The spread operator (...) allows an iterable to expand in places where multiple arguments or elements are expected.
+
+27. What is the rest parameter?
+The rest parameter syntax (...args) allows a function to accept an indefinite number of arguments as an array.
+
+28. What are template literals?
+Template literals allow for multi-line strings and embedding expressions with ${expression} inside backticks.
+
+29. What is a callback function?
+A callback is a function passed as an argument to another function to be executed later.
+
+30. What are async callbacks?
+Async callbacks are callbacks used to handle asynchronous operations, allowing JavaScript to continue executing other code in the meantime.
+
+31. What are higher-order functions?
+Higher-order functions are functions that operate on other functions, either by taking them as arguments or returning them.
+
+32. What is a module in JavaScript?
+A module is a piece of code encapsulated in its own scope, often exportable and importable across different files for modular programming.
+
+33. What is strict mode?
+strict mode is a way to enforce stricter parsing and error handling in JavaScript, preventing some common coding mistakes.
+
+34. Explain Promise.all.
+Promise.all takes an array of Promises and returns a single Promise that resolves when all have resolved or rejects if any Promise fails.
+
+35. What is debouncing?
+Debouncing limits how often a function is called by delaying execution until a certain time has passed since the last call.
+
+36. What is throttling?
+Throttling ensures a function executes only once in a specified time period, regardless of how many times it’s triggered.
+
+37. Explain deep cloning.
+Deep cloning creates a complete copy of an object, including nested objects, preventing changes to the original.
+
+38. What is shallow cloning?
+Shallow cloning copies an object but not deeply nested objects, which remain references to the original.
+
+39. What is an iterable in JavaScript?
+An iterable is an object that can be iterated over, such as arrays or strings, using a for...of loop.
+
+40. What are generators?
+Generators are functions that return an iterable object with the yield keyword, allowing for controlled iteration.
+
+41. What is the eval function?
+eval executes a string of JavaScript code but is generally discouraged due to security risks and performance issues.
+
+42. Explain Array.prototype.sort.
+sort() sorts an array in place, converting elements to strings by default or with a comparison function.
+
+43. What is object destructuring?
+Object destructuring allows extracting properties from objects and assigning them to variables in a single statement.
+
+44. What is functional programming?
+Functional programming is a paradigm where functions are treated as first-class citizens, promoting pure functions and immutability.
+
+45. What is tail call optimization?
+Tail call optimization allows the last function call in a function to return directly, improving memory efficiency in recursive functions.
+
+46. Explain Object.create().
+Object.create() creates a new object with the specified prototype, allowing for more flexible inheritance.
+
+47. What is method chaining?
+Method chaining is the practice of calling multiple methods in a single line of code, allowing for cleaner syntax.
+
+48. Explain ES6 classes.
+ES6 classes provide a more readable syntax for object-oriented programming in JavaScript, offering a blueprint for creating objects with inheritance.
+
+49. What is event loop?
+The event loop manages asynchronous tasks by queuing and executing callback functions after the call stack is empty.
+
+50. What is the difference between for...of and for...in?
+for...of iterates over iterable objects like arrays, returning values.
+for...in iterates over object properties, returning keys.
